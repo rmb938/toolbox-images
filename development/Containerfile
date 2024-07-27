@@ -1,0 +1,23 @@
+FROM registry.fedoraproject.org/fedora-toolbox:40
+
+ARG NAME=development-fedora-toolbox
+ARG VERSION=40
+
+LABEL com.github.containers.toolbox="true" \
+      name="$NAME" \
+      version="$VERSION" \
+      usage="This image is meant to be used with the toolbox(1) command" \
+      summary="Image for creating Fedora Toolbx containers"
+
+RUN dnf --assumeyes install zsh
+
+# Use container host that is unique for this toolbox
+ENV CONTAINER_HOST=unix:///run/user/1000/podman/toolbox-development-podman.sock
+
+RUN dnf --assumeyes install podman-remote
+
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
+RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+RUN dnf --assumeyes install code
+
+RUN dnf clean all
