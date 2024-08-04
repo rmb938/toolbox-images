@@ -20,7 +20,7 @@ RUN ln -s /usr/bin/podman-remote /usr/bin/podman
 RUN ln -s /usr/bin/podman /usr/bin/docker
 
 # Development
-RUN dnf -y install make golang java-11-openjdk java-17-openjdk
+RUN dnf -y install make golang java-11-openjdk java-17-openjdk ansible
 
 # vscode
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
