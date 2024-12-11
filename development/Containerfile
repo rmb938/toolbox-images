@@ -20,7 +20,9 @@ RUN ln -s /usr/bin/podman-remote /usr/bin/podman
 RUN ln -s /usr/bin/podman /usr/bin/docker
 
 # Development
-RUN dnf -y install make golang java-11-openjdk java-17-openjdk ansible ansible-lint python3-netaddr
+RUN dnf -y install adoptium-temurin-java-repository
+RUN dnf -y config-manager --set-enabled adoptium-temurin-java-repository
+RUN dnf -y install make golang temurin-11-jdk temurin-17-jdk ansible ansible-lint python3-netaddr
 
 # vscode
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
