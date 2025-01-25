@@ -41,6 +41,13 @@ RUN dnf install -y dnf-plugins-core
 RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 RUN dnf -y install terraform
 
+# Packer
+RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+RUN dnf -y install packer
+
+# Yubikey
+RUN dnf -y install yubikey-manager libyubikey libyubikey-devel openssl-pkcs11 python3-pykcs11
+
 # Copy rootfs
 COPY rootfs/ /
 
