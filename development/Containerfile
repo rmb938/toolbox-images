@@ -46,7 +46,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
 RUN dnf -y install packer
 
 # Yubikey
-RUN dnf -y install yubikey-manager libyubikey libyubikey-devel openssl-pkcs11 python3-pykcs11
+RUN dnf -y install opensc yubikey-manager yubico-piv-tool libyubikey libyubikey-devel openssl-pkcs11 python3-pykcs11
 
 # Copy rootfs
 COPY rootfs/ /
