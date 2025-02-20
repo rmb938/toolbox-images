@@ -10,7 +10,7 @@ LABEL com.github.containers.toolbox="true" \
       summary="Image for creating Fedora Toolbx containers"
 
 # Shell
-RUN dnf -y install zsh vim htop net-tools
+RUN dnf -y install zsh vim htop net-tools jq
 
 # Container Stuff
 ENV CONTAINER_HOST=unix:///run/user/1000/podman/toolbox-development-podman.sock
